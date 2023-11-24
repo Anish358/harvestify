@@ -18,6 +18,7 @@ const Navbar = () => {
           alt="logo"
           width={100}
           height={100}
+          onClick={() => router.push("/")}
         />
         <div className="flex items-center">
           <Button
@@ -27,7 +28,11 @@ const Navbar = () => {
           >
             About
           </Button>
-          <Button variant="ghost" className="mx-5 text-lg" href="/">
+          <Button
+            variant="ghost"
+            className="mx-5 text-lg"
+            onClick={() => router.push("/services")}
+          >
             Services
           </Button>
           <Button

@@ -1,6 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "../globals.css";
 import { Ubuntu } from "next/font/google";
+import Navbar from "@/components/Shared/Navbar";
 
 const ubuntu = Ubuntu({ subsets: ["latin"], weight: "400" });
 
@@ -13,7 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={ubuntu.className}>{children}</body>
+        <body className={ubuntu.className}>
+          <Navbar />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
