@@ -3,11 +3,14 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo_transparent.png";
 import { useRouter } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const router = useRouter();
+
+  console.log(user);
 
   return (
     <div>
@@ -16,18 +19,18 @@ const Navbar = () => {
           className="cursor-pointer flex-none"
           src={logo}
           alt="logo"
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           onClick={() => router.push("/")}
         />
         <div className="flex items-center">
-          <Button
+          {/* <Button
             variant="ghost"
             className="mx-5 text-lg"
             onClick={() => router.push("/about")}
           >
             About
-          </Button>
+          </Button> */}
           <Button
             variant="ghost"
             className="mx-5 text-lg"
@@ -35,13 +38,17 @@ const Navbar = () => {
           >
             Services
           </Button>
-          <Button
-            onClick={() => router.push("/sign-in")}
-            variant="ghost"
-            className="mx-5 text-lg"
-          >
-            Get Started
-          </Button>
+          {!user ? (
+            <Button
+              onClick={() => router.push("/sign-in")}
+              variant="ghost"
+              className="mx-5 text-lg"
+            >
+              Get Started
+            </Button>
+          ) : (
+            <UserButton />
+          )}
         </div>
       </div>
     </div>

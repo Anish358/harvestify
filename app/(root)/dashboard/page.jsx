@@ -12,7 +12,7 @@ const page = () => {
   return (
     <div className="mt-10 px-6">
       <h1>Dashboard</h1>
-      <UserButton />
+
       <SignedIn>
         <SignOutButton signOutCallback={() => router.push("/sign-in")}>
           <div className="flex cursor-pointer gap-4 p-4">
